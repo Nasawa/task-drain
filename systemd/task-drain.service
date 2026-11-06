@@ -1,0 +1,13 @@
+[Unit]
+Description=task-drain: drain the deterministic due-queue
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Optional: hand needs_judgment tasks to a person or an agent session.
+# Environment=TASK_DRAIN_JUDGMENT_CMD=/path/to/notify-or-wake
+ExecStart=/usr/bin/python3 %h/task-drain/runner.py
+WorkingDirectory=%h/task-drain
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,10 @@
+[Unit]
+Description=task-drain nightly: drain the due-queue at 04:20 local
+
+[Timer]
+OnCalendar=*-*-* 04:20:00
+Persistent=true
+Unit=task-drain.service
+
+[Install]
+WantedBy=timers.target
